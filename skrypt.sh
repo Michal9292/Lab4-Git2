@@ -2,11 +2,11 @@
 
 case "$1" in
 
---date)
+--date|-d)
     date
     ;;
 
---logs)
+--logs|-l)
 
     count=${2:-100}
 
@@ -21,13 +21,33 @@ case "$1" in
 
     ;;
 
---help)
+--error|-e)
+
+    count=${2:-100}
+
+    for ((i=1;i<=count;i++))
+    do
+        mkdir -p "error$i"
+
+        echo "Error file $i" > "error$i/error$i.txt"
+    done
+
+    ;;
+
+--help|-h)
 
     echo "Dostępne opcje:"
-    echo "--date  - wyświetla aktualną datę"
-    echo "--logs  - tworzy 100 plików log"
-    echo "--logs X - tworzy X plików log"
-    echo "--help  - wyświetla pomoc"
+    echo "--date  -d"
+    echo "--logs  -l"
+    echo "--error -e"
+    echo "--help  -h"
+    echo "--init"
+
+    ;;
+
+--init)
+
+    git clone $(git config --get remote.origin.url)
 
     ;;
 
