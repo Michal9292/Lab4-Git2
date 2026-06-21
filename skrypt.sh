@@ -34,20 +34,20 @@ case "$1" in
 
     ;;
 
---init)
-
-    git clone $(git config --get remote.origin.url)
-
-    ;;
-
 --help|-h)
 
     echo "Dostępne opcje:"
-    echo "--date  (-d)"
-    echo "--logs  (-l) [liczba]"
-    echo "--error (-e) [liczba]"
+    echo "--date  -d"
+    echo "--logs  -l"
+    echo "--error -e"
+    echo "--help  -h"
     echo "--init"
-    echo "--help  (-h)"
+
+    ;;
+
+--init)
+
+    git clone $(git config --get remote.origin.url)
 
     ;;
 
