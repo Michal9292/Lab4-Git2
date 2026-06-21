@@ -2,11 +2,11 @@
 
 case "$1" in
 
---date)
+--date|-d)
     date
     ;;
 
---logs)
+--logs|-l)
 
     count=${2:-100}
 
@@ -21,13 +21,19 @@ case "$1" in
 
     ;;
 
---help)
+--help|-h)
 
     echo "Dostępne opcje:"
-    echo "--date  - wyświetla aktualną datę"
-    echo "--logs  - tworzy 100 plików log"
-    echo "--logs X - tworzy X plików log"
-    echo "--help  - wyświetla pomoc"
+    echo "--date  -d"
+    echo "--logs  -l"
+    echo "--help  -h"
+    echo "--init"
+
+    ;;
+
+--init)
+
+    git clone $(git config --get remote.origin.url)
 
     ;;
 
